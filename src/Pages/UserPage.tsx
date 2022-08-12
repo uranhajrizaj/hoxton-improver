@@ -48,12 +48,11 @@ export function UserPage() {
       <div className="left_menu">
         <ul>
             {users.map(user=>(
-                //@ts-ignore
-                signinuser.id===user.id?
+              
             <li>
               <img src={user.image}></img>
               <h4 className="users_name">{user.name}</h4>
-            </li>:<h5>Loading....</h5>
+            </li>
        
             ))}
         </ul>

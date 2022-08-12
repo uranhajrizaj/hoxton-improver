@@ -51,6 +51,11 @@
       "message": "Lets go out for a drink"
     }
   ],
+  "conversations": [
+    {
+      "messageId": 1,
+      "userId": "johndoe@gmail.com"
+    }],
   "signin": [
 
     {
