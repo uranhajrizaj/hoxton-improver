@@ -1,0 +1,103 @@
+:root{
+    --primary-color: #225a92;
+    --secondary-color: #55a8fafd;
+    --tertiary-color: white;
+}
+
+
+.container{
+    display:grid;
+    height:100vh;
+    grid-template:
+    "user_header user_header" 60px
+    "left_menu   main_content" 1fr/
+    200px 1fr;
+
+}
+.user_header{
+    display:grid;
+    grid-area:user_header;
+    background-color: var(--primary-color);
+    place-content: center;
+    color: var(--tertiary-color);
+}
+.left_menu{
+    display:grid;
+    grid-area:left_menu;
+    background-color: var(--secondary-color);
+}
+
+.main_content{
+    display:grid;
+    grid-area:main_content;
+    background-color: var(--tertiary-color);
+    grid-auto-flow: column;
+    padding: 0.5rem;
+}
+.left_menu li{
+    list-style:none;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--tertiary-color);
+     color: var(--tertiary-color);
+     display:grid;
+     grid-auto-flow: column;
+     place-content: center start;
+     cursor:pointer
+}
+.left_menu li:hover{
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+}
+.left_menu li img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+.users_name{
+    display:grid;
+    place-content: center start;
+    margin-left: 0.5rem ;
+}
+
+.main_content li{
+    list-style:none;
+    padding: 0.5rem;
+    display:grid;
+    place-content: center start;
+    cursor:pointer;
+    padding: 0.8rem    
+}
+.your_messages{
+    display:grid;
+    place-content:  start end;
+}
+.your_messages li{
+     background-color: var(--secondary-color);
+        color: var(--tertiary-color);
+        border-radius: 1rem;  
+        margin-top: 10px;
+}
+
+.friend_messages{
+    display:grid;
+    place-content: start;
+}
+.friend_messages li{
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    border-radius: 1rem;  
+    margin-top: 10px;
+}
+.single_message img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    place-self: center start;
+}
+.single_message{
+    display:grid;
+    grid-auto-flow: column;
+    justify-content: start;
+
+}

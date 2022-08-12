@@ -1,0 +1,29 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+
+
+.App{
+  display:grid;
+  height:100vh;
+
+}
+.signin-form{
+  display:grid;
+  grid-gap: 1rem;
+  
+}
+.error{
+  color: red;
+  font-size: 10px;
+}
+.countainer{
+  display:grid;
+  place-content: center;
+ 
+}
+
+

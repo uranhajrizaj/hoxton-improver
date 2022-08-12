@@ -1,0 +1,63 @@
+{
+  "users": [
+    {
+      "name": "Pat Smith",
+      "id": "patsmith@gmail.com",
+      "password": "psmith",
+      "image": "https://images.pexels.com/photos/6489667/pexels-photo-6489667.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+    },
+    {
+      "name": "John Doe",
+      "id": "johndoe@gmail.com",
+      "password": "jdoe",
+      "image": "https://images.pexels.com/photos/1571673/pexels-photo-1571673.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+    },
+    {
+      "name": "Alice Smith",
+      "id": "alicesmith@gmail.com",
+      "password": "asmith",
+      "image": "https://images.pexels.com/photos/13146110/pexels-photo-13146110.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "userId": "alicesmith@gmail.com",
+      "message": "hey heyyyyy"
+    },
+    {
+      "id": 1,
+      "userId": "alicesmith@gmail.com",
+      "message": "How are you?"
+    },
+    {
+      "id": 1,
+      "userId": "alicesmith@gmail.com",
+      "message": "How are you doing?"
+    },
+    {
+      "id": 1,
+      "userId": "patsmith@gmail.com",
+      "message": "Fine, thanks"
+    },
+    {
+      "id": 1,
+      "userId": "patsmith@gmail.com",
+      "message": "How are you?"
+    },
+    {
+      "id": 1,
+      "userId": "patsmith@gmail.com",
+      "message": "Lets go out for a drink"
+    }
+  ],
+  "signin": [
+
+    {
+      "name": "John Doe",
+      "id": "johndoe@gmail.com",
+      "password": "jdoe",
+      "image": "https://images.pexels.com/photos/1571673/pexels-photo-1571673.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+    }
+  ]
+}
