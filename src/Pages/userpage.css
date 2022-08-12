@@ -77,6 +77,8 @@
         color: var(--tertiary-color);
         border-radius: 1rem;  
         margin-top: 10px;
+        display: grid;
+;
 }
 
 .friend_messages{

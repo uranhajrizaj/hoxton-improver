@@ -18,10 +18,21 @@ type User = {
     image: string;
     };
 
+type Conversation={
+    messageId: number;
+    userId: string;
+    message: {
+        id: number;
+        userId: string;
+        message: string;
+    };
+}
+
 export function UserPage() {
  const[users,setUsers]=useState<User[]>([])
   const [messages, setmessages] = useState<Message[]>([]);
-  const[signinuser,setSigninUser]=useState<User>()
+  const[signinuser,setSigninUser]=useState<User>();
+  const[conversations,setConversations]=useState<Conversation[]>([]);
   useEffect(() => {
 
     fetch("http://localhost:4000/signin")
@@ -36,8 +47,10 @@ export function UserPage() {
       .then((response) => response.json())
       .then((usersFromServer) => setUsers(usersFromServer));  
       
-  
-
+   fetch(`http://localhost:4000/conversations?_expand=message`)
+        .then((response) => response.json())
+        .then((conversations) => setConversations(conversations));
+    
   }, []);
 
   return (
@@ -58,6 +71,7 @@ export function UserPage() {
         </ul>
       </div>
       <main className="main_content">
+       
         <div className="friend_messages">
           <ul>
             {messages.map((message) => (
@@ -74,15 +88,19 @@ export function UserPage() {
            
           <ul className="messages_list">
           {messages.map((message) => (
-            signinuser?.id===message.userId?
+          
             <div className="single_message">
               <li className="">
                 <h4 className="users_name">Uran</h4>
               </li>
               <img src="https://images.pexels.com/photos/13146110/pexels-photo-13146110.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"></img>
-            </div>:null))}
+            </div>))}
           </ul>
+       
         </div>
+       
+      
+
       </main>
     </div>
   );
