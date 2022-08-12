@@ -11,7 +11,7 @@ export function SignIn(){
     event.preventDefault()
     const email=event.target.email.value
     const password=event.target.password.value
-    const user={email,password}
+  
       fetch(`http://localhost:4000/users/${email}`)
                     .then((response)=>response.json())
                     .then(user=>{

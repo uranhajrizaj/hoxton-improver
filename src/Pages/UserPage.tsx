@@ -33,12 +33,12 @@ export function UserPage() {
  const[users,setUsers]=useState<User[]>([])
   const[signinuser,setSigninUser]=useState<User>();
   const[conversations,setConversations]=useState<Conversation[]>([]);
-  const[chooseFridend,setChooseFriend]=useState("");
+  const[chooseFridend,setChooseFriend]=useState<User>();
   useEffect(() => {
 
     fetch("http://localhost:4000/signin")
     .then((response) => response.json())
-      .then((user) => setSigninUser(user));
+      .then((signin) => setSigninUser(signin));
 
     fetch("http://localhost:4000/users")
       .then((response) => response.json())
@@ -52,18 +52,19 @@ export function UserPage() {
 
   return (
     <div className="container">
+     
       <header className="user_header">
         <h1>Welcome</h1>
       </header>
       <div className="left_menu">
         <ul>
             {users.map(user=>(
-              
-            <li onClick={()=>setChooseFriend(user.id)}>
+              user.id !=="johndoe@gmail.com"?
+            <li onClick={()=>setChooseFriend(user)}>
               <img src={user.image}></img>
               <h4 className="users_name">{user.name}</h4>
             </li>
-       
+             :null
             ))}
         </ul>
       </div>
@@ -72,9 +73,9 @@ export function UserPage() {
         <div className="friend_messages">
           <ul>
             {conversations.map((message) => (
-              message.message.userId===chooseFridend?
+              (message.message.userId===chooseFridend?.id && message.userId==="johndoe@gmail.com")?
             <div className="single_message">
-              <img src={message.user.image}></img>
+              <img src={chooseFridend?.image}></img>
               <li className=""> <h4 className="users_name">{message.message.message}</h4>
               </li>
             </div>:null
@@ -85,13 +86,13 @@ export function UserPage() {
            
           <ul className="messages_list">
           {conversations.map((message) => (
-          
+            (message.message.userId==="johndoe@gmail.com"&& message.userId===chooseFridend?.id)?
             <div className="single_message">
               <li className="">
-                <h4 className="users_name">Uran</h4>
+                <h4 className="users_name">{message.message.message}</h4>
               </li>
-              <img src="https://images.pexels.com/photos/13146110/pexels-photo-13146110.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"></img>
-            </div>))}
+              <img src="https://images.pexels.com/photos/1571673/pexels-photo-1571673.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"></img>
+            </div>:null))}
           </ul>
        
         </div>

@@ -28,12 +28,22 @@
     {
       "id": 2,
       "userId": "patsmith@gmail.com",
-      "message": "Fine, thanks"
+      "message": "How are you?"
     },
     {
       "id": 3,
       "userId": "alicesmith@gmail.com",
       "message": "What are you doing?"
+    },
+    {
+      "id": 4,
+      "userId": "johndoe@gmail.com",
+      "message": "Fine thanks"
+    },
+    {
+      "id": 5,
+      "userId": "johndoe@gmail.com",
+      "message": "I'm working"
     }
   ],
   "conversations": [
@@ -48,6 +58,22 @@
     {
       "messageId": 3,
       "userId": "johndoe@gmail.com"
+    },
+    {
+      "messageId": 4,
+      "userId": "patsmith@gmail.com"
+    },
+    {
+      "messageId": 5,
+      "userId": "patsmith@gmail.com"
+    },
+    {
+      "messageId": 3,
+      "userId": "patsmith@gmail.com"
+    },
+    {
+      "messageId": 4,
+      "userId": "alicesmith@gmail.com"
     }
   ],
   "signin": [
