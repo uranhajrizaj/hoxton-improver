@@ -55,7 +55,7 @@ export function UserPage({user}: {user: User | null}) {
   return (
     <div className="container">  
       <header className="user_header">
-        <h1>Welcome</h1>
+        <h1>Welcome to Hoxhey</h1>
       </header>
       <div className="left_menu">
         {user!==undefined ?
