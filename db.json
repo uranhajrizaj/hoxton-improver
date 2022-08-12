@@ -23,12 +23,17 @@
     {
       "id": 1,
       "userId": "alicesmith@gmail.com",
-      "message": "How are you"
+      "message": "How are you?"
     },
     {
       "id": 2,
       "userId": "patsmith@gmail.com",
       "message": "Fine, thanks"
+    },
+    {
+      "id": 3,
+      "userId": "alicesmith@gmail.com",
+      "message": "What are you doing?"
     }
   ],
   "conversations": [
@@ -39,6 +44,10 @@
     {
       "messageId": 2,
       "userId": "johndoe@gmail.com"
+    },
+    {
+      "messageId": 3,
+      "userId": "johndoe@gmail.com"
     }
   ],
   "signin": [
@@ -47,6 +56,12 @@
       "id": "alicesmith@gmail.com",
       "password": "asmith",
       "image": "https://images.pexels.com/photos/13146110/pexels-photo-13146110.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+    },
+    {
+      "name": "John Doe",
+      "id": "johndoe@gmail.com",
+      "password": "jdoe",
+      "image": "https://images.pexels.com/photos/1571673/pexels-photo-1571673.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
     }
   ]
 }

@@ -26,28 +26,25 @@ type Conversation={
         userId: string;
         message: string;
     };
+    user:User
 }
 
 export function UserPage() {
  const[users,setUsers]=useState<User[]>([])
-  const [messages, setmessages] = useState<Message[]>([]);
   const[signinuser,setSigninUser]=useState<User>();
   const[conversations,setConversations]=useState<Conversation[]>([]);
+  const[chooseFridend,setChooseFriend]=useState("");
   useEffect(() => {
 
     fetch("http://localhost:4000/signin")
     .then((response) => response.json())
       .then((user) => setSigninUser(user));
 
-    fetch("http://localhost:4000/messages?_expand=user")
-      .then((response) => response.json())
-      .then((messages) => setmessages(messages));
-
     fetch("http://localhost:4000/users")
       .then((response) => response.json())
       .then((usersFromServer) => setUsers(usersFromServer));  
       
-   fetch(`http://localhost:4000/conversations?_expand=message`)
+   fetch(`http://localhost:4000/conversations?_expand=message&_expand=user`)
         .then((response) => response.json())
         .then((conversations) => setConversations(conversations));
     
@@ -62,7 +59,7 @@ export function UserPage() {
         <ul>
             {users.map(user=>(
               
-            <li>
+            <li onClick={()=>setChooseFriend(user.id)}>
               <img src={user.image}></img>
               <h4 className="users_name">{user.name}</h4>
             </li>
@@ -74,20 +71,20 @@ export function UserPage() {
        
         <div className="friend_messages">
           <ul>
-            {messages.map((message) => (
-            
+            {conversations.map((message) => (
+              message.message.userId===chooseFridend?
             <div className="single_message">
               <img src={message.user.image}></img>
-              <li className=""> <h4 className="users_name">{message.message}</h4>
+              <li className=""> <h4 className="users_name">{message.message.message}</h4>
               </li>
-            </div>
+            </div>:null
             ))}
           </ul>
         </div>
         <div className="your_messages">
            
           <ul className="messages_list">
-          {messages.map((message) => (
+          {conversations.map((message) => (
           
             <div className="single_message">
               <li className="">
