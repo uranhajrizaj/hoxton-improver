@@ -75,19 +75,6 @@
       "messageId": 4,
       "userId": "alicesmith@gmail.com"
     }
-  ],
-  "signin": [
-    {
-      "name": "Alice Smith",
-      "id": "alicesmith@gmail.com",
-      "password": "asmith",
-      "image": "https://images.pexels.com/photos/13146110/pexels-photo-13146110.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
-    },
-    {
-      "name": "John Doe",
-      "id": "johndoe@gmail.com",
-      "password": "jdoe",
-      "image": "https://images.pexels.com/photos/1571673/pexels-photo-1571673.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
-    }
   ]
+  
 }

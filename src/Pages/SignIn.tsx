@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { User } from "./UserPage"
 
-export function SignIn(){
-  const[user,setUser]=useState([])
+export function SignIn({setUser}: {setUser: (user: User | null) => void}) {
+ 
   const[alert,setAlert]=useState(false)
 
   const navigate=useNavigate()
@@ -11,22 +12,13 @@ export function SignIn(){
     event.preventDefault()
     const email=event.target.email.value
     const password=event.target.password.value
-  
+    
       fetch(`http://localhost:4000/users/${email}`)
                     .then((response)=>response.json())
                     .then(user=>{
                       if(user.password===password) {
                         setUser(user)
-                        fetch(`http://localhost:4000/signin`,{
-                          method:"POST",
-                          headers:{
-                            "Content-Type":"application/json"
-                          },
-                          body:JSON.stringify(user)
-                        })
-
-                        navigate('/user_page')
-
+                         navigate('/user_page')
                       }
                       else{ setAlert(true)}
                     })

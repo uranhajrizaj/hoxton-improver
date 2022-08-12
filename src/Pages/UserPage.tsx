@@ -11,7 +11,7 @@ type Message = {
     image: string;
   };
 };
-type User = {
+export type User = {
     id: string;
     name: string;
     password: string;
@@ -29,16 +29,13 @@ type Conversation={
     user:User
 }
 
-export function UserPage() {
- const[users,setUsers]=useState<User[]>([])
-  const[signinuser,setSigninUser]=useState<User>();
+export function UserPage({user}: {user: User | null}) {
+  const[users,setUsers]=useState<User[]>([])
+  
   const[conversations,setConversations]=useState<Conversation[]>([]);
   const[chooseFridend,setChooseFriend]=useState<User>();
-  useEffect(() => {
 
-    fetch("http://localhost:4000/signin")
-    .then((response) => response.json())
-      .then((signin) => setSigninUser(signin));
+  useEffect(() => {
 
     fetch("http://localhost:4000/users")
       .then((response) => response.json())
@@ -47,26 +44,33 @@ export function UserPage() {
    fetch(`http://localhost:4000/conversations?_expand=message&_expand=user`)
         .then((response) => response.json())
         .then((conversations) => setConversations(conversations));
-    
-  }, []);
-
-  return (
-    <div className="container">
      
+
+  }, []);
+  
+
+  let otherUsers=users.filter(u=>u.id!==user?.id)
+  console.log(otherUsers)
+ console.log(user)
+  return (
+    <div className="container">  
       <header className="user_header">
         <h1>Welcome</h1>
       </header>
       <div className="left_menu">
+        {user!==undefined ?
         <ul>
-            {users.map(user=>(
-              user.id !=="johndoe@gmail.com"?
+            {
+            otherUsers.map(user=>(
             <li onClick={()=>setChooseFriend(user)}>
               <img src={user.image}></img>
               <h4 className="users_name">{user.name}</h4>
             </li>
-             :null
+            
             ))}
         </ul>
+           : <h1>Loading...</h1>
+        }
       </div>
       <main className="main_content">
        
@@ -81,6 +85,7 @@ export function UserPage() {
             </div>:null
             ))}
           </ul>
+       
         </div>
         <div className="your_messages">
            
