@@ -30,6 +30,7 @@ export function UserPage({ user, setUser }: Props) {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [chooseFridend, setChooseFriend] = useState<User>();
 
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -81,7 +82,7 @@ export function UserPage({ user, setUser }: Props) {
         {user !== undefined ? (
           <ul>
             {otherUsers.map((user) => (
-              <li onClick={() => setChooseFriend(user)}>
+              <li onClick={() => setChooseFriend(user)} className={user.id===chooseFridend?.id ? "clicked":""}>
                 <img src={user.image}></img>
                 <h4 className="users_name">{user.name}</h4>
               </li>
@@ -92,6 +93,14 @@ export function UserPage({ user, setUser }: Props) {
         )}
       </div>
       <main className="main_content">
+        {chooseFridend !== undefined? 
+          
+            <div className="chat_header">
+              <img src={chooseFridend.image}></img>
+              <h4 className="users_name">{chooseFridend.name}</h4>
+            </div>
+            :null
+            }    
         <div className="friend_messages">
           <ul className="messages_list">
             {conversations.map((conversation) =>

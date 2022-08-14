@@ -2,6 +2,7 @@
     --primary-color: #225a92;
     --secondary-color: #55a8fafd;
     --tertiary-color: white;
+    --cheat_header-color: #d87b7b;
 }
 
 
@@ -59,15 +60,29 @@
 .main_content{
     display:grid;
     grid-template:
+    "chat_header  chat_header"  30px
     "friend_messages  your_messages "1fr
     "form   form" 50px/
     1fr     1fr;
     grid-area:main_content;
     background-color: var(--tertiary-color);
-    grid-auto-flow: column;
-    padding: 0.5rem;
-    
+    padding-bottom: 10px;
 }
+.chat_header{
+    display:grid;
+    grid-area:chat_header;
+    grid-auto-flow: column;
+    background-color: var(--cheat_header-color);
+    color: var(--tertiary-color);
+    padding: 5px;
+    gap:10px;
+}
+.chat_header img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
 .left_menu li{
     list-style:none;
     padding: 0.5rem;
@@ -80,6 +95,10 @@
 }
 .left_menu li:hover{
     background-color: var(--tertiary-color);
+    color: var(--primary-color);
+}
+.clicked{
+    background-color: var(--cheat_header-color);
     color: var(--primary-color);
 }
 .left_menu li img{
@@ -106,6 +125,7 @@
     display:grid;
     grid-area: your_messages ;
     place-content:  start end;
+    padding:0.5rem
 }
 .your_messages li{
      background-color: var(--secondary-color);
@@ -113,14 +133,13 @@
         border-radius: 1rem;  
         margin-top: 10px;
         display: grid;
-
-;
 }
 
 .friend_messages{
     display:grid;
     grid-area: friend_messages ;
     place-content: start;
+    padding:0.5rem
 }
 .friend_messages li{
     background-color: var(--primary-color);
@@ -146,7 +165,8 @@
     grid-template-columns: 1fr 30px;
     grid-area:form;
     border: 1px solid var(--primary-color);
-   border-radius:10px
+   border-radius:10px;
+   margin:0.2rem
 
 }
 .form input{
