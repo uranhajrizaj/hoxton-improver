@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route index element={<Navigate to="/sign_in"/>} />
         <Route path="/sign_in" element={<SignIn setUser={setUser}/>}/>
-        <Route path="/user_page" element={<UserPage user={user}/>}/>
+        <Route path="/user_page" element={<UserPage user={user} setUser={setUser} />}/>
      
       </Routes>
     </div>

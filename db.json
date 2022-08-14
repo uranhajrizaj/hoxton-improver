@@ -31,18 +31,6 @@
       "image": "https://images.pexels.com/photos/967070/pexels-photo-967070.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
-      "name": "Steve Jobs",
-      "id": "stevejobs@gmail.com",
-      "password": "sjobs",
-      "image": "https://images.pexels.com/photos/4388167/pexels-photo-4388167.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "name": "Mark Zuckerberg",
-      "id": "markzuckerberg@gmail.com",
-      "password": "markz",
-      "image": "https://images.pexels.com/photos/257472/pexels-photo-257472.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
       "name": "Elon Musk",
       "id": "elonmusk@gmail.com",
       "password": "emusk",
@@ -82,15 +70,66 @@
     },
     {
       "userId": "patsmith@gmail.com",
-      "message": "hello",
-      "conversationId": 3,
+      "message": "i hope that i fix this",
+      "conversationId": 1,
       "id": 6
     },
     {
-      "userId": "alicesmith@gmail.com",
-      "message": "hello pat lets go for a drink",
-      "conversationId": 969333,
+      "userId": "patsmith@gmail.com",
+      "message": "Hello Jhn",
+      "conversationId": 1,
       "id": 7
+    },
+    {
+      "userId": "johndoe@gmail.com",
+      "message": "Hello Elon",
+      "conversationId": 2,
+      "id": 8
+    },
+    {
+      "userId": "johndoe@gmail.com",
+      "message": "hello bill",
+      "id": 9
+    },
+    {
+      "conversationId": 6,
+      "userId": "johndoe@gmail.com",
+      "message": "hello bill",
+      "id": 10
+    },
+    {
+      "userId": "johndoe@gmail.com",
+      "message": "how are you",
+      "id": 11
+    },
+    {
+      "userId": "billgates@gmail.com",
+      "message": "hello",
+      "conversationId": 6,
+      "id": 12
+    },
+    {
+      "userId": "billgates@gmail.com",
+      "message": "What's upp",
+      "conversationId": 6,
+      "id": 13
+    },
+    {
+      "userId": "johndoe@gmail.com",
+      "message": "hello elon",
+      "id": 14
+    },
+    {
+      "conversationId": 7,
+      "userId": "johndoe@gmail.com",
+      "message": "hello elon",
+      "id": 15
+    },
+    {
+      "userId": "alicesmith@gmail.com",
+      "message": "hhello broo",
+      "conversationId": 1,
+      "id": 16
     }
   ],
   "conversations": [
@@ -106,28 +145,28 @@
     },
     {
       "id": 3,
-      "starterId": "elonmusk@gmail.com",
-      "participantId": "alicesmith@gmail.com"
-    },
-    {
       "starterId": "alicesmith@gmail.com",
-      "participantId": "patsmith@gmail.com",
-      "id": 4
+      "participantId": "bobdoe@gmail.com"
     },
     {
+      "id": 4,
       "starterId": "alicesmith@gmail.com",
-      "participantId": "patsmith@gmail.com",
-      "id": 5
+      "participantId": "billgates@gmail.com"
     },
     {
-      "starterId": "patsmith@gmail.com",
-      "participantId": "markzuckerberg@gmail.com",
+      "id": 5,
+      "starterId": "alicesmith@gmail.com",
+      "participantId": "elonmusk@gmail.com"
+    },
+    {
+      "starterId": "johndoe@gmail.com",
+      "participantId": "billgates@gmail.com",
       "id": 6
     },
     {
-      "starterId": "alicesmith@gmail.com",
-      "participantId": "patsmith@gmail.com",
-      "id": 969333
+      "starterId": "johndoe@gmail.com",
+      "participantId": "elonmusk@gmail.com",
+      "id": 7
     }
   ]
 }

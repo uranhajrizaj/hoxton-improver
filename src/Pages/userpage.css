@@ -136,7 +136,7 @@
 }
 .single_message{
     display:grid;
-    grid-auto-flow: column;
+  
     justify-content: start;
 
 }
@@ -170,11 +170,17 @@
 .my_message{
     display:grid;
     grid-auto-flow: column;
-
-    /* margin-right: 0.5rem; */
+    place-content: center end;
 }
 .messages_list{
     display:grid;
    justify-items: end;
 
+}
+.message_item{
+    display:grid;
+    grid-auto-flow: column;
+   border-radius:10px;
+   color: var(--tertiary-color);
+   place-content: center start;
 }
