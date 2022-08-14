@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
+import {GoSignOut} from "react-icons/go";
+import {FaPaperPlane} from "react-icons/fa"
 import "./userpage.css";
 type Message = {
-  id: number;
-  userId: string;
+
+  userId: string ;
+  conversationId: string ;
   message: string;
-  user: {
-    name: string;
-    id: string;
-    password: string;
-    image: string;
-  };
 };
 export type User = {
     id: string;
@@ -19,15 +16,12 @@ export type User = {
     };
 
 type Conversation={
-    messageId: number;
-    userId: string;
-    message: {
-        id: number;
-        userId: string;
-        message: string;
-    };
-    user:User
+    starterId: string ;
+    participantId: string ;
+    messages: Message[];
+    
 }
+
 
 export function UserPage({user}: {user: User | null}) {
   const[users,setUsers]=useState<User[]>([])
@@ -41,7 +35,7 @@ export function UserPage({user}: {user: User | null}) {
       .then((response) => response.json())
       .then((usersFromServer) => setUsers(usersFromServer));  
       
-   fetch(`http://localhost:4000/conversations?_expand=message&_expand=user`)
+   fetch(`http://localhost:4000/conversations?starterId=${user?.id}&_embed=messages`)
         .then((response) => response.json())
         .then((conversations) => setConversations(conversations));
      
@@ -50,12 +44,17 @@ export function UserPage({user}: {user: User | null}) {
   
 
   let otherUsers=users.filter(u=>u.id!==user?.id)
-  console.log(otherUsers)
- console.log(user)
+ 
   return (
     <div className="container">  
       <header className="user_header">
         <h1>Welcome to Hoxhey</h1>
+        <div className="user_info">
+          <img src={user?.image}></img>
+          <h4 className="user_name">{user?.name}</h4>
+          <span className="sign_out"><GoSignOut/></span>
+
+        </div>
       </header>
       <div className="left_menu">
         {user!==undefined ?
@@ -75,14 +74,21 @@ export function UserPage({user}: {user: User | null}) {
       <main className="main_content">
        
         <div className="friend_messages">
-          <ul>
-            {conversations.map((message) => (
-              (message.message.userId===chooseFridend?.id && message.userId==="johndoe@gmail.com")?
+          <ul className="messages_list">
+            {conversations.map((conversation) => (
+              (conversation.participantId===chooseFridend?.id && conversation.starterId===user?.id)?
             <div className="single_message">
+             { conversation.messages.map(message=>(
+              message.userId===conversation.participantId?
+              <>
               <img src={chooseFridend?.image}></img>
-              <li className=""> <h4 className="users_name">{message.message.message}</h4>
-              </li>
-            </div>:null
+              <li className=""> <h4 className="users_name">{message.message}</h4>
+               </li>
+              </>
+              :null
+             ))}
+            </div>
+            :null
             ))}
           </ul>
        
@@ -90,19 +96,61 @@ export function UserPage({user}: {user: User | null}) {
         <div className="your_messages">
            
           <ul className="messages_list">
-          {conversations.map((message) => (
-            (message.message.userId==="johndoe@gmail.com"&& message.userId===chooseFridend?.id)?
+          {conversations.map((conversation) => (
+            (conversation.starterId===user?.id && conversation.participantId===chooseFridend?.id)?
             <div className="single_message">
+              { conversation.messages.map(message=>(
+              message.userId===conversation.starterId?
+                <div className="my_message">
               <li className="">
-                <h4 className="users_name">{message.message.message}</h4>
+                <h4 className="users_name">{message.message}</h4>
               </li>
-              <img src="https://images.pexels.com/photos/1571673/pexels-photo-1571673.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"></img>
+               <img src={user?.image}></img>
+               </div>
+              :null
+                ))}
             </div>:null))}
           </ul>
        
         </div>
+        {chooseFridend!==undefined?
+       <form className="form" 
+       onSubmit={(e)=>{
+        e.preventDefault()
        
-      
+        let randomId=Math.floor(Math.random()*1000000)
+         //@ts-ignore
+        const message=String(e.target.message.value)
+        const newMessage={ userId:user?.id, message:message,conversationId: randomId }
+        const newConversation={starterId:user?.id,participantId:chooseFridend?.id,messages:[newMessage]}
+        setConversations([...conversations,newConversation])
+        fetch("http://localhost:4000/messages",{
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify(newMessage)
+        })
+     
+          fetch("http://localhost:4000/conversations",{
+            method:"POST",
+            headers:{
+              "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+              starterId:user?.id,
+              participantId:chooseFridend?.id,
+             id:randomId})
+          })
+  
+        //@ts-ignore
+        e.target.message.value=""
+       }}>
+       
+        <input placeholder="Sent message...." name="message"></input>
+        <button><FaPaperPlane/></button>
+        </form>
+       :null}
 
       </main>
     </div>

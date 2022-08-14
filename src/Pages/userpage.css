@@ -16,10 +16,39 @@
 }
 .user_header{
     display:grid;
+    grid-auto-flow: column;
     grid-area:user_header;
     background-color: var(--primary-color);
-    place-content: center;
     color: var(--tertiary-color);
+    
+}
+.user_header h1{
+    place-self: center ;
+}
+.user_info{
+    display:grid;
+    grid-auto-flow: column;
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    padding: 5px;
+    border-radius: 10px;
+    gap:10px;
+    place-self: center end;
+    position:absolute;
+}
+.user_info h4{
+ place-self: center;
+}
+.user_info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+ 
+}
+.sign_out{
+    align-self: end;
+    font-size: 20px;
+    cursor: pointer;
 }
 .left_menu{
     display:grid;
@@ -29,10 +58,15 @@
 
 .main_content{
     display:grid;
+    grid-template:
+    "friend_messages  your_messages "1fr
+    "form   form" 50px/
+    1fr     1fr;
     grid-area:main_content;
     background-color: var(--tertiary-color);
     grid-auto-flow: column;
     padding: 0.5rem;
+    
 }
 .left_menu li{
     list-style:none;
@@ -70,6 +104,7 @@
 }
 .your_messages{
     display:grid;
+    grid-area: your_messages ;
     place-content:  start end;
 }
 .your_messages li{
@@ -78,11 +113,13 @@
         border-radius: 1rem;  
         margin-top: 10px;
         display: grid;
+
 ;
 }
 
 .friend_messages{
     display:grid;
+    grid-area: friend_messages ;
     place-content: start;
 }
 .friend_messages li{
@@ -101,5 +138,43 @@
     display:grid;
     grid-auto-flow: column;
     justify-content: start;
+
+}
+.form{
+    display:grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 30px;
+    grid-area:form;
+    border: 1px solid var(--primary-color);
+   border-radius:10px
+
+}
+.form input{
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.form button{
+    all:unset;
+    cursor:pointer;
+    color: var(--primary-color); 
+}
+.form button:hover{
+    color: var(--secondary-color);
+}
+.form button:active{
+    color: red;
+}
+.my_message{
+    display:grid;
+    grid-auto-flow: column;
+
+    /* margin-right: 0.5rem; */
+}
+.messages_list{
+    display:grid;
+   justify-items: end;
 
 }

@@ -41,7 +41,7 @@
       "id": "markzuckerberg@gmail.com",
       "password": "markz",
       "image": "https://images.pexels.com/photos/257472/pexels-photo-257472.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },  
+    },
     {
       "name": "Elon Musk",
       "id": "elonmusk@gmail.com",
@@ -53,58 +53,81 @@
     {
       "id": 1,
       "userId": "alicesmith@gmail.com",
-      "message": "How are you?"
+      "conversationId": 1,
+      "message": "How are you Pat?"
     },
     {
       "id": 2,
       "userId": "patsmith@gmail.com",
-      "message": "How are you?"
+      "conversationId": 1,
+      "message": "Fine thanks. How are you Alice?"
     },
     {
       "id": 3,
       "userId": "alicesmith@gmail.com",
-      "message": "What are you doing?"
+      "conversationId": 2,
+      "message": "What are you doing John?"
     },
     {
       "id": 4,
       "userId": "johndoe@gmail.com",
-      "message": "Fine thanks"
+      "conversationId": 2,
+      "message": "I'm working. How about you Alice?"
     },
     {
       "id": 5,
-      "userId": "johndoe@gmail.com",
-      "message": "I'm working"
+      "userId": "elonmusk@gmail.com",
+      "conversationId": 3,
+      "message": "Hi Alice. How are you?"
+    },
+    {
+      "userId": "patsmith@gmail.com",
+      "message": "hello",
+      "conversationId": 3,
+      "id": 6
+    },
+    {
+      "userId": "alicesmith@gmail.com",
+      "message": "hello pat lets go for a drink",
+      "conversationId": 969333,
+      "id": 7
     }
   ],
   "conversations": [
     {
-      "messageId": 1,
-      "userId": "johndoe@gmail.com"
+      "id": 1,
+      "starterId": "alicesmith@gmail.com",
+      "participantId": "patsmith@gmail.com"
     },
     {
-      "messageId": 2,
-      "userId": "johndoe@gmail.com"
+      "id": 2,
+      "starterId": "alicesmith@gmail.com",
+      "participantId": "johndoe@gmail.com"
     },
     {
-      "messageId": 3,
-      "userId": "johndoe@gmail.com"
+      "id": 3,
+      "starterId": "elonmusk@gmail.com",
+      "participantId": "alicesmith@gmail.com"
     },
     {
-      "messageId": 4,
-      "userId": "patsmith@gmail.com"
+      "starterId": "alicesmith@gmail.com",
+      "participantId": "patsmith@gmail.com",
+      "id": 4
     },
     {
-      "messageId": 5,
-      "userId": "patsmith@gmail.com"
+      "starterId": "alicesmith@gmail.com",
+      "participantId": "patsmith@gmail.com",
+      "id": 5
     },
     {
-      "messageId": 3,
-      "userId": "patsmith@gmail.com"
+      "starterId": "patsmith@gmail.com",
+      "participantId": "markzuckerberg@gmail.com",
+      "id": 6
     },
     {
-      "messageId": 4,
-      "userId": "alicesmith@gmail.com"
+      "starterId": "alicesmith@gmail.com",
+      "participantId": "patsmith@gmail.com",
+      "id": 969333
     }
   ]
-  
 }
